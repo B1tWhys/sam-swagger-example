@@ -1,0 +1,32 @@
+openapi: '3.0.2'
+info:
+  title: Test API
+  version: '1.0'
+servers:
+  - url: "https://3sp6l92kgf.execute-api.us-east-1.amazonaws.com/{basePath}"
+    variables:
+      basePath:
+        default: "Prod"
+
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        userid:
+          type: string
+paths:
+  /user:
+    post:
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+          # headers:
+          #   Location:
+          #     schema:
+          #       type: string
+          #       description: Url to get the user
